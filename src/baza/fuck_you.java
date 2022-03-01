@@ -7,11 +7,12 @@ public class fuck_you {
 	public static boolean run = true;
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);	// input for outer loop
+		Scanner in = new Scanner(System.in);	// input for inner loop
 		int num = 0;
-		String s = "";										// добавить поддержку имён
+		String answer = "";										// добавить поддержку имён
 		
-		while(run) {	// main loop
+		while(run) {	// main outer loop
 			System.out.print("Сколько раз послать нахуй? ");
 			boolean ioError = true;
 			
@@ -29,52 +30,59 @@ public class fuck_you {
 			if(checkValue(num))		// check for 0 and negative value
 				printFuck(num);		// print "пошёл нахуй"
 			else {
-				System.out.println("Всё хуйня, давай по новой. \n");
+				System.out.println("\nВсё хуйня, давай по новой. \n");
 				continue;
 			}
 			
 			
 			boolean ans = true;
 			
-			while(ans) {	// secondary loop for repeating and exit
+			while(ans) {	// inner loop for repeating and exit
 				System.out.println("Послать ещё? ");
 				
-				if(sc.hasNext())	// get input
-					s = sc.next();
-				else
-					System.out.println("что-то не так");
+				if (in.hasNext()) { // get input
+					answer = in.nextLine();
+				} else {
+					System.out.println("что-то не так"); // should not ever work
+					in.next();
+					continue;
+				}
 				
-				switch(parseString(s)) {
-					case 1: System.out.println("харош"); 
+				switch(parseString(answer)) {
+					case 1: System.out.println("Харош.");	// start all over
 							ans = false; 
 							break;
 					
-					case 2: System.out.println("не угадал"); break;
+					case 2: System.out.println("Не угадал."); break;		// you can't say no
 					
-					case 3: System.out.println("Ну лан, давай тогда");
+					case 3: System.out.println("Хуйню пишеш.");	break;		// you can't say anything else
+							
+					case 0: System.out.println("Ну лан.");					// say "zaebal" to end program
 							ans = false;
-							exit(); 
-							break;
+							exit();
 				}
 					
 			}
 			
 		}
 		sc.close();
+		in.close();
 	}
 	
 	public static int parseString(String s) {
-			if(s.equalsIgnoreCase("да") || s.equalsIgnoreCase("yes") || s.equalsIgnoreCase("y"))
+		
+			if (s.equalsIgnoreCase("заебал") || s.equalsIgnoreCase("zaebal"))	// end program
+				return 0;
+		
+			else if(s.equalsIgnoreCase("да") || s.equalsIgnoreCase("д") || s.equalsIgnoreCase("yes") || s.equalsIgnoreCase("y"))
 				return 1;
 			
-			else if(s.equalsIgnoreCase("нет") || s.equalsIgnoreCase("no") || s.equalsIgnoreCase("n"))
+			else if(s.equalsIgnoreCase("нет") || s.equalsIgnoreCase("н") || s.equalsIgnoreCase("no") || s.equalsIgnoreCase("n"))
 				return 2;
 			
-			else {
-				System.out.println("Ты такие вещи не пиши. ");
+			else
 				return 3;
-			}
-				
+					
 	}
 	
 	public static void printFuck(int n) {
