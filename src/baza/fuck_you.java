@@ -1,6 +1,5 @@
 package baza;
 
-import java.io.BufferedReader;
 import java.util.Scanner;
 
 public class fuck_you {
@@ -8,61 +7,72 @@ public class fuck_you {
 	public static boolean run = true;
 
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		int num = 0;
-		String s;										// добавить поддержку имён
-		
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		String s = br.readLine();
-//		int i = Integer.parseInt(s);
-		
 		Scanner sc = new Scanner(System.in);
-		while(run) {
+		int num = 0;
+		String s = "";										// добавить поддержку имён
+		
+		while(run) {	// main loop
 			System.out.print("Сколько раз послать нахуй? ");
-//			num = in.nextInt();							// впилить try-catch, легко наебать
-//			in.nextLine();
+			boolean ioError = true;
 			
-			
-		    boolean inError = true;
-		    
-		    while (inError) {
+		    while (ioError) {
 		        if (sc.hasNextInt())
 		            num = sc.nextInt();
 		        else {
 		            sc.next();
-		            System.out.print("Сука цифру напиши а ");
+		            System.out.println("Сука число напиши а ");
 		            continue;
 		        	}
-		        inError = false;
+		        ioError = false;
 		    }
 			
-			if(checkValue(num))
-				printFuck(num);
+			if(checkValue(num))		// check for 0 and negative value
+				printFuck(num);		// print "пошёл нахуй"
 			else {
 				System.out.println("Всё хуйня, давай по новой. \n");
 				continue;
 			}
-/*			
-			do {										// переделать, хуево
-				System.out.print("Послать ещё нахуй? ");
-				s = in.next();							// баг с проскакиванием ввода, надо придумать как починить
-			} while (!parseString(s));
-*/			
-														// придумать как красиво сделать выход
+			
+			
+			boolean ans = true;
+			
+			while(ans) {	// secondary loop for repeating and exit
+				System.out.println("Послать ещё? ");
+				
+				if(sc.hasNext())	// get input
+					s = sc.next();
+				else
+					System.out.println("что-то не так");
+				
+				switch(parseString(s)) {
+					case 1: System.out.println("харош"); 
+							ans = false; 
+							break;
+					
+					case 2: System.out.println("не угадал"); break;
+					
+					case 3: System.out.println("Ну лан, давай тогда");
+							ans = false;
+							exit(); 
+							break;
+				}
+					
+			}
+			
 		}
 		sc.close();
-		
-//		in.close();
 	}
 	
-	public static boolean parseString(String s) {
+	public static int parseString(String s) {
 			if(s.equalsIgnoreCase("да") || s.equalsIgnoreCase("yes") || s.equalsIgnoreCase("y"))
-				return true;
+				return 1;
+			
 			else if(s.equalsIgnoreCase("нет") || s.equalsIgnoreCase("no") || s.equalsIgnoreCase("n"))
-				return false;
+				return 2;
+			
 			else {
-				System.out.print("Ты такие вещи не пиши. ");
-				return false;
+				System.out.println("Ты такие вещи не пиши. ");
+				return 3;
 			}
 				
 	}
@@ -70,6 +80,7 @@ public class fuck_you {
 	public static void printFuck(int n) {
 		for(int i = 1; i <= n; i++)
 			System.out.println("Пошёл нахуй!");
+		
 		System.out.println();
 	}
 	
@@ -77,9 +88,11 @@ public class fuck_you {
 		if(n == 0) {
 			System.out.print("Специально для тебя, нахуй ноль раз! ");
 			return false;
+			
 		} else if(n < 0) {
 			System.out.print("Умный пиздец, да? ");
 			return false;
+			
 		} else
 			return true;
 	}
