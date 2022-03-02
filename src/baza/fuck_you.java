@@ -7,65 +7,25 @@ public class fuck_you {
 	public static boolean run = true;
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);	// input for outer loop
-		Scanner in = new Scanner(System.in);	// input for inner loop
+		
+		
 		int num = 0;
-		String answer = "";										// добавить поддержку имён
+											// добавить поддержку имён
 		
 		while(run) {	// main outer loop
 			System.out.print("How many times fuck you? ");
-			boolean ioError = true;
 			
-		    while (ioError) {
-		        if (sc.hasNextInt())
-		            num = sc.nextInt();
-		        else {
-		            sc.next();
-		            System.out.println("Write a fucking number ");
-		            continue;
-		        	}
-		        ioError = false;
-		    }
+			num = getInt();
 			
 			if(checkValue(num))		// check for 0 and negative value
-				printFuck(num);		// print "пошёл нахуй"
+				printFuck(num);		// print "fuck you"
 			else {
 				System.out.println("\nVse huinya, davai po novoi. \n");
 				continue;
 			}
 			
-			
-			boolean ans = true;
-			
-			while(ans) {	// inner loop for repeating and exit
-				System.out.println("Poslat' eshcho? ");
-				
-				if (in.hasNext()) { // get input
-					answer = in.nextLine();
-				} else {
-					System.out.println("something's wrong "); // should not ever work, just for safety
-					in.next();
-					continue;
-				}
-				
-				switch(getAnswer(answer)) {
-					case 1: System.out.println("Harosh.");	// start all over
-							ans = false; 
-							break;
-					
-					case 2: System.out.println("Ne ugadal."); break;		// you can't say no
-					
-					case 3: System.out.println("Huiny pishesh'.");	break;		// you can't say anything else
-							
-					case 0: System.out.println("Nu lan.");					// say "zaebal" to end program
-							ans = false;
-							exit();
-				}	
-			}
-			
+			askToFuckYouAgain();
 		}
-		sc.close();
-		in.close();
 	}
 	
 	public static int getAnswer(String s) {
@@ -102,6 +62,56 @@ public class fuck_you {
 			return true;
 	}
 	
+	public static int getInt() {
+		Scanner sc = new Scanner(System.in);	// input for outer loop
+		int num = 0;
+		boolean ioError = true;
+		
+		while (ioError) {
+	        if (sc.hasNextInt())
+	            num = sc.nextInt();
+	        else {
+	            sc.next();
+	            System.out.println("Write a fucking number ");
+	            continue;
+	        	}
+	        ioError = false;
+	    }
+		return num;
+	}
+	
+	public static void askToFuckYouAgain() {
+		Scanner in = new Scanner(System.in);	// input for inner loop
+		String answer = "";	
+		boolean ans = true;
+		
+		while(ans) {	// inner loop for repeating and exit
+			System.out.println("Poslat' eshcho? ");
+			
+			if (in.hasNext()) { // get input
+				answer = in.nextLine();
+			} else {
+				System.out.println("something's wrong "); // should not ever work, just for safety
+				in.next();
+				continue;
+			}
+			
+			switch(getAnswer(answer)) {
+				case 1: System.out.println("Harosh.");	// start all over
+						ans = false; 
+						break;
+				
+				case 2: System.out.println("Ne ugadal."); break;		// you can't say no
+				
+				case 3: System.out.println("Huiny pishesh'.");	break;		// you can't say anything else
+						
+				case 0: System.out.println("Nu lan.");					// say "zaebal" to end program
+						ans = false;
+						exit();
+			}	
+		}
+		
+	}
+	
 	public static void exit() { run = false; }
-
 }
