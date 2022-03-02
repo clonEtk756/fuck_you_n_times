@@ -13,7 +13,7 @@ public class fuck_you {
 		String answer = "";										// добавить поддержку имён
 		
 		while(run) {	// main outer loop
-			System.out.print("Сколько раз послать нахуй? ");
+			System.out.print("How many times fuck you? ");
 			boolean ioError = true;
 			
 		    while (ioError) {
@@ -21,7 +21,7 @@ public class fuck_you {
 		            num = sc.nextInt();
 		        else {
 		            sc.next();
-		            System.out.println("Сука число напиши а ");
+		            System.out.println("Write a fucking number ");
 		            continue;
 		        	}
 		        ioError = false;
@@ -30,7 +30,7 @@ public class fuck_you {
 			if(checkValue(num))		// check for 0 and negative value
 				printFuck(num);		// print "пошёл нахуй"
 			else {
-				System.out.println("\nВсё хуйня, давай по новой. \n");
+				System.out.println("\nVse huinya, davai po novoi. \n");
 				continue;
 			}
 			
@@ -38,30 +38,29 @@ public class fuck_you {
 			boolean ans = true;
 			
 			while(ans) {	// inner loop for repeating and exit
-				System.out.println("Послать ещё? ");
+				System.out.println("Poslat' eshcho? ");
 				
 				if (in.hasNext()) { // get input
 					answer = in.nextLine();
 				} else {
-					System.out.println("что-то не так"); // should not ever work
+					System.out.println("something's wrong "); // should not ever work, just for safety
 					in.next();
 					continue;
 				}
 				
-				switch(parseString(answer)) {
-					case 1: System.out.println("Харош.");	// start all over
+				switch(getAnswer(answer)) {
+					case 1: System.out.println("Harosh.");	// start all over
 							ans = false; 
 							break;
 					
-					case 2: System.out.println("Не угадал."); break;		// you can't say no
+					case 2: System.out.println("Ne ugadal."); break;		// you can't say no
 					
-					case 3: System.out.println("Хуйню пишеш.");	break;		// you can't say anything else
+					case 3: System.out.println("Huiny pishesh'.");	break;		// you can't say anything else
 							
-					case 0: System.out.println("Ну лан.");					// say "zaebal" to end program
+					case 0: System.out.println("Nu lan.");					// say "zaebal" to end program
 							ans = false;
 							exit();
-				}
-					
+				}	
 			}
 			
 		}
@@ -69,7 +68,7 @@ public class fuck_you {
 		in.close();
 	}
 	
-	public static int parseString(String s) {
+	public static int getAnswer(String s) {
 		
 			if (s.equalsIgnoreCase("заебал") || s.equalsIgnoreCase("zaebal"))	// end program
 				return 0;
@@ -81,24 +80,22 @@ public class fuck_you {
 				return 2;
 			
 			else
-				return 3;
-					
+				return 3;	// for any other bullshit
 	}
 	
 	public static void printFuck(int n) {
 		for(int i = 1; i <= n; i++)
-			System.out.println("Пошёл нахуй!");
-		
+			System.out.println("Poshel nahui!");
 		System.out.println();
 	}
 	
 	public static boolean checkValue(int n) {
 		if(n == 0) {
-			System.out.print("Специально для тебя, нахуй ноль раз! ");
+			System.out.print("Specialno dlya tebya, fuck you 0 times! ");
 			return false;
 			
 		} else if(n < 0) {
-			System.out.print("Умный пиздец, да? ");
+			System.out.print("Umniy pizdec? ");
 			return false;
 			
 		} else
