@@ -121,7 +121,7 @@ public class fuck_you {
 		switch(getAnswer(s)) {
 			case 1: System.out.println("Net, ne budesh "); break;
 			
-			case 2: System.out.println("Gde-to zagrustil 1 Farid");
+			case 2: System.out.println("Gde-to zagrustil 1 Farid"); break;
 			
 			case 3: System.out.println("bruh");
 		}
