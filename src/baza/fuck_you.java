@@ -32,10 +32,10 @@ public class fuck_you {
 			if (s.equalsIgnoreCase("заебал") || s.equalsIgnoreCase("zaebal"))	// end program
 				return 0;
 		
-			else if(s.equalsIgnoreCase("да") || s.equalsIgnoreCase("д") || s.equalsIgnoreCase("yes") || s.equalsIgnoreCase("y") || s.equalsIgnoreCase("budu"))
+			else if(s.equalsIgnoreCase("yes") || s.equalsIgnoreCase("y") || s.equalsIgnoreCase("budu"))
 				return 1;
 			
-			else if(s.equalsIgnoreCase("нет") || s.equalsIgnoreCase("н") || s.equalsIgnoreCase("no") || s.equalsIgnoreCase("n") || s.equalsIgnoreCase("ne budu"))
+			else if(s.equalsIgnoreCase("no") || s.equalsIgnoreCase("n") || s.equalsIgnoreCase("ne budu"))
 				return 2;
 			
 			else
