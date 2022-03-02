@@ -7,12 +7,11 @@ public class fuck_you {
 	public static boolean run = true;
 
 	public static void main(String[] args) {
-		
-		
-		int num = 0;
-											// добавить поддержку имён
-		
-		while(run) {	// main outer loop
+		int num = 0;			// добавить поддержку имён
+								// вилкой раз или жопу глаз => vilkoy raz ili v zhopu glaz
+		budesh();
+
+		while(run) {	// main loop
 			System.out.print("How many times fuck you? ");
 			
 			num = getInt();
@@ -33,10 +32,10 @@ public class fuck_you {
 			if (s.equalsIgnoreCase("заебал") || s.equalsIgnoreCase("zaebal"))	// end program
 				return 0;
 		
-			else if(s.equalsIgnoreCase("да") || s.equalsIgnoreCase("д") || s.equalsIgnoreCase("yes") || s.equalsIgnoreCase("y"))
+			else if(s.equalsIgnoreCase("да") || s.equalsIgnoreCase("д") || s.equalsIgnoreCase("yes") || s.equalsIgnoreCase("y") || s.equalsIgnoreCase("budu"))
 				return 1;
 			
-			else if(s.equalsIgnoreCase("нет") || s.equalsIgnoreCase("н") || s.equalsIgnoreCase("no") || s.equalsIgnoreCase("n"))
+			else if(s.equalsIgnoreCase("нет") || s.equalsIgnoreCase("н") || s.equalsIgnoreCase("no") || s.equalsIgnoreCase("n") || s.equalsIgnoreCase("ne budu"))
 				return 2;
 			
 			else
@@ -81,7 +80,7 @@ public class fuck_you {
 	}
 	
 	public static void askToFuckYouAgain() {
-		Scanner in = new Scanner(System.in);	// input for inner loop
+		Scanner in = new Scanner(System.in);	// input for 
 		String answer = "";	
 		boolean ans = true;
 		
@@ -97,7 +96,7 @@ public class fuck_you {
 			}
 			
 			switch(getAnswer(answer)) {
-				case 1: System.out.println("Harosh.");	// start all over
+				case 1: System.out.println("Harosh.");	// return to the main loop
 						ans = false; 
 						break;
 				
@@ -109,6 +108,22 @@ public class fuck_you {
 						ans = false;
 						exit();
 			}	
+		}
+	}
+	
+	public static void budesh() {
+		Scanner in = new Scanner(System.in);
+		String s = "";
+		
+		System.out.println("Budesh? ");
+		s = in.nextLine();
+		
+		switch(getAnswer(s)) {
+			case 1: System.out.println("Net, ne budesh "); break;
+			
+			case 2: System.out.println("Gde-to zagrustil 1 Farid");
+			
+			case 3: System.out.println("bruh");
 		}
 		
 	}
